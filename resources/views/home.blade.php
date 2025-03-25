@@ -27,7 +27,6 @@
 
 
 </head>
-
 <body>
     <div class="site-wrap">
         <header class="site-navbar" role="banner">

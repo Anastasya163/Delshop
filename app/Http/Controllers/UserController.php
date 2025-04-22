@@ -94,6 +94,8 @@ class UserController extends Controller
     {
         $pengguna = User::where('id', Auth::user()->id)->first();
 
+        $fileName = "";
+
         $name = $request->name;
         $jenis_kelamin = $request->jenis_kelamin;
         $pekerjaan = $request->pekerjaan;
@@ -101,22 +103,11 @@ class UserController extends Controller
         $no_telp = $request->no_telp;
         $tentang = $request->tentang;
         $email = $request->email;
-        // $twitter = $request->twitter;
-        // $facebook = $request->facebook;
-        // $instagram = $request->instagram;
-        // $linkedin = $request->linkedin;
         if ($request->file('gambar_pengguna')) {
             if ($request->hasfile('gambar_pengguna')) {
-                $filename = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('gambar_pengguna')->getClientOriginalName());
-                $request->file('gambar_pengguna')->move(public_path('user-images'), $filename);
-                $pengguna->update(['gambar_pengguna' => $filename]);
-            } else {
-                $profile = 'profile.png';
-                $pengguna->update(['gambar_pengguna' => $profile]);
+                $fileName = round(microtime(true) * 1000) . '-' . str_replace(' ', '-', $request->file('gambar_pengguna')->getClientOriginalName());
+                $request->file('gambar_pengguna')->move(public_path('user-images'), $fileName);
             }
-
-            // $validatedData['gambar_produk'] = $request->file('gambar_produk')->store('product-images');
-            // $tambahproduk->gambar_produk = $request->gambar_produk;
         }
 
         if ($request->password_old != null && $request->password_new != null && $request->kpassword_new != null) {
@@ -135,23 +126,40 @@ class UserController extends Controller
             }
         }
 
-        $pengguna->update([
-            'name' => $name,
-            'jenis_kelamin' => $jenis_kelamin,
-            'pekerjaan' => $pekerjaan,
-            'alamat' => $alamat,
-            'no_telp' => $no_telp,
-            'tentang' => $tentang,
-            'email' => $email,
-            // 'twitter' => $twitter,
-            // 'facebook' => $facebook,
-            // 'instagram' => $instagram,
-            // 'linkedin' => $linkedin,
-        ]);
 
-        // if (route('admin.profile')) {
-        //     return redirect()->route('admin.profile');
-        // }
+        //set data for update profile user
+        if($fileName != ""){
+            $updatePengguna = [
+                'name' => $name,
+                'jenis_kelamin' => $jenis_kelamin,
+                'pekerjaan' => $pekerjaan,
+                'alamat' => $alamat,
+                'no_telp' => $no_telp,
+                'tentang' => $tentang,
+                'email' => $email,
+                'gambar_pengguna'=>$fileName
+            ];
+        }
+        else{
+            $updatePengguna = [
+                'name' => $name,
+                'jenis_kelamin' => $jenis_kelamin,
+                'pekerjaan' => $pekerjaan,
+                'alamat' => $alamat,
+                'no_telp' => $no_telp,
+                'tentang' => $tentang,
+                'email' => $email,
+                'gambar_pengguna'=>"profile.png"
+            ];
+
+        }
+
+        //Query update for update profile user
+        DB::table('users')
+        ->where('id', Auth::user()->id)
+        ->update($updatePengguna);
+
+        // $pengguna->update();
 
         if (route('pembeli.profile')) {
             return redirect()->route('pembeli.profile')->with('success', 'Data pengguna berhasil diubah');
@@ -170,3 +178,6 @@ class UserController extends Controller
         }
     }
 }
+
+
+

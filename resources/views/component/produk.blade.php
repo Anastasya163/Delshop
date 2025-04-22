@@ -6,23 +6,33 @@
                 <div class="row">
                     <div class="col-md-12 mb-5">
                         <div class="d-flex">
+                            <form action="" class="site-block-top-search">
+                                <span class="icon icon-search2"></span>
+                                <input type="text" name="search_produk" id="search_produk"
+                                class="form-control border-4" placeholder="Search">
+                            </form>
                             <div class="dropdown mr-1 ml-md-auto btn-group">
-                                <button type="button" class="btn btn-sm dropdown-toggle text-white"
-                                    id="dropdownMenuReference" data-toggle="dropdown"
-                                    style="background-color: #00337C !important">Urutkan</button>
-                                @php
-                                    $semua = 'semua';
-                                    $terlama = 'terlama';
-                                    $terbaru = 'terbaru';
-                                    $tertinggi = 'tertinggi';
-                                    $terendah = 'terendah';
-                                @endphp
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                                    <a class="dropdown-item" href="/produk/{{ $terbaru }}">Terbaru</a>
-                                    <a class="dropdown-item" href="/produk/{{ $terlama }}">Terlama</a>
-                                    <a class="dropdown-item" href="/produk/{{ $tertinggi }}">Harga Tertinggi</a>
-                                    <a class="dropdown-item" href="/produk/{{ $terendah }}">Harga Terendah</a>
-                                </div>
+
+                                    &nbsp&nbsp
+
+                                    <div class="d-flex">
+                                        <button type="button" class="btn btn-sm dropdown-toggle text-white"
+                                        id="dropdownMenuReference" data-toggle="dropdown"
+                                        style="background-color: #00337C !important">Urutkan</button>
+                                        @php
+                                            $semua = 'semua';
+                                            $terlama = 'terlama';
+                                            $terbaru = 'terbaru';
+                                            $tertinggi = 'tertinggi';
+                                            $terendah = 'terendah';
+                                        @endphp
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                                            <a class="dropdown-item" href="/produk/{{ $terbaru }}">Terbaru</a>
+                                            <a class="dropdown-item" href="/produk/{{ $terlama }}">Terlama</a>
+                                            <a class="dropdown-item" href="/produk/{{ $tertinggi }}">Harga Tertinggi</a>
+                                            <a class="dropdown-item" href="/produk/{{ $terendah }}">Harga Terendah</a>
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                     </div>

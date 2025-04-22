@@ -4,76 +4,37 @@
 @endphp
 <div class="site-section">
     @if ($current == 'pembeli.checkout' || $current == "pembeli.prosescheckout")
-        <div class="container pl-5" style="max-width: 1300px">
+        <div class="container px-3 px-md-4 px-lg-5">
             <div class="row mb-5">
-                <div class="col-lg-7">
-                    <div class="col-lg-12 mb-4" style="border: solid 1px; border-radius: 5px">
-                        <div class="row p-2">
-                            <div class="col-12">
-                                <h5 class="text-dark" style="font-weight:bold ">Pemesan</h5>
-                            </div>
-                            <div class="col-12">
-                                <span class="text-dark">{{Auth::user()->name}}</span>
-                            </div>
-                            <div class="col-12">
-                                <span class="text-dark">{{Auth::user()->no_telp}}</span>
-                            </div>
-                            <div class="col-12">
-                                <span class="text-dark">{{Auth::user()->role_pengguna}}</span>
-                            </div>
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="fw-bold text-dark">Pemesan</h5>
+                            <p class="mb-1 text-dark">{{ Auth::user()->name }}</p>
+                            <p class="mb-1 text-dark">{{ Auth::user()->no_telp }}</p>
+                            <p class="mb-0 text-dark">{{ Auth::user()->role_pengguna }}</p>
                         </div>
                     </div>
-                    @php
-                        $total_pro = 0;
-                        $total_pri = 0;
-                    @endphp
+                    @php $total_pro = 0; $total_pri = 0; @endphp
                     @foreach ($item as $data)
-                        <div class="col-lg-12 mb-4" style="border: solid 1px; border-radius: 5px">
-                            <div class="row p-4">
-                                <div class="col-lg-2" style="place-self: center">
-                                    <img src="/product-images/{{ $data->gambar_produk }}" alt="" class="w-100">
+                        <div class="card mb-4">
+                            <div class="row g-0 p-3">
+                                <div class="col-4 col-md-2 d-flex align-items-center">
+                                    <img src="/product-images/{{ $data->gambar_produk }}" class="img-fluid rounded" alt="produk">
                                 </div>
-                                <div class="col-lg-6" style="place-self: center">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <span class="text-dark"
-                                                style="font-weight: bold">{{ $data->nama_produk }}</span>
-                                        </div>
-                                        @php
-                                            $varPesanan = json_decode($data->variasi_pes, true);
-                                            $j = 0;
-                                        @endphp
-                                        <div class="col-sm-12">
-                                            <span class="text-dark">Variasi :</span>
-                                            @if ($data->variasi_pes != null)
-                                                @for ($i = 0; $i < count($varPesanan); $i++)
-                                                    <span class="text-dark">{{ $varPesanan[$i][1] }}</span>
-                                                    @if ($i < count($varPesanan) - 1)
-                                                        ,
-                                                    @endif
-                                                @endfor
-                                            @else
-                                                <span></span>
-                                            @endif
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <span class="text-dark">Jumlah Produk : {{ $data->jumlah }}</span>
-                                        </div>
-                                    </div>
+                                <div class="col-8 col-md-6">
+                                    <h6 class="fw-bold text-dark">{{ $data->nama_produk }}</h6>
+                                    @php $varPesanan = json_decode($data->variasi_pes, true); @endphp
+                                    <p class="mb-1 text-dark">Variasi:
+                                        @if ($data->variasi_pes)
+                                            {{ implode(', ', array_column($varPesanan, 1)) }}
+                                        @endif
+                                    </p>
+                                    <p class="mb-0 text-dark">Jumlah Produk: {{ $data->jumlah }}</p>
                                 </div>
-                                <div class="col-lg-4 text-dark"
-                                    style="text-align-last: right; font-weight:bold; place-self:center">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            Subtotal
-                                        </div>
-                                        <div class="col-12">
-                                            Rp. <?php
-                                            $angka = $data->jumlah_harga;
-                                            echo number_format($angka, 0, ',', '.');
-                                            ?>
-                                        </div>
-                                    </div>
+                                <div class="col-md-4 text-end d-flex flex-column justify-content-center">
+                                    <p class="mb-1 text-dark fw-bold">Subtotal</p>
+                                    <p class="mb-0 text-dark">Rp. {{ number_format($data->jumlah_harga, 0, ',', '.') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -84,197 +45,104 @@
                         @endphp
                     @endforeach
                 </div>
-                <div class="col-lg-4 ml-3">
-                    <div class="row">
-                        <div class="col-lg-12"
-                            style="border:solid 1px; border-radius: 5px;max-height:250px; min-height:250px">
-                            <div class="row pt-4 ml-1">
-                                <div class="col-lg-12 pb-2">
-                                    <h5 class="text-dark" style="font-weight: bold">Total Pesanan</h5>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <h5 class="text-dark">Total Produk</h5>
-                                        </div>
-                                        <div class="col-6 pr-5" style="text-align-last: right">
-                                            <h6>{{ $total_pro }} Produk</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <h5 class="text-dark">Total Harga Produk</h5>
-                                        </div>
-                                        <div class="col-6 pr-5" style="text-align-last: right">
-                                            <h6>Rp. <?php
-                                            echo number_format($total_pri, 0, ',', '.');
-                                            ?></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="pr-5" color="black" size="5" width="75%">
-                                <form action="/checkout/produk" method="post">
-                                    @csrf
-                                    @php
-                                        $idPes = implode(',', $id_pes);
-                                    @endphp
-                                    <input type="hidden" value="{{ $idPes }}" name="id_pesanan" id="id_pesanan">
-                                    <div class="col-lg-12 pt-2" style="text-align-last:center">
-                                        <p><button type="submit" class="buy-now btn btn-sm btn-primary">Pesan
-                                                Sekarang</button></p>
-                                    </div>
-                                </form>
+                <div class="col-lg-4">
+                    <div class="card mb-3" style="min-height: 250px">
+                        <div class="card-body">
+                            <h5 class="fw-bold text-dark">Total Pesanan</h5>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-dark">Total Produk</span>
+                                <span>{{ $total_pro }} Produk</span>
                             </div>
-                        </div>
-                        <div class="col-lg-12 mt-3" style="border:solid 1px; border-radius: 5px">
-                            <div class="row pt-4 pb-4 ml-1">
-                                <div class="col-lg-12 pb-2">
-                                    <h6 class="text-dark" style="font-weight: bold">Informasi Penting!</h6>
-                                </div>
-                                <div class="col-lg-12">
-                                    <span class="text-dark">Pengambilan dan pembayaran pesanan dilakukan di
-                                        tempat.</span>
-                                </div>
-                                <div class="col-lg-12">
-                                    <span class="text-dark" style="font-weight: bold">Selamat belanja!</span>
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-dark">Total Harga Produk</span>
+                                <span>Rp. {{ number_format($total_pri, 0, ',', '.') }}</span>
                             </div>
+                            <hr>
+                            <form action="/checkout/produk" method="POST">
+                                @csrf
+                                @php $idPes = implode(',', $id_pes); @endphp
+                                <input type="hidden" name="id_pesanan" value="{{ $idPes }}">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-sm btn-primary">Pesan Sekarang</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="fw-bold text-dark">Informasi Penting!</h6>
+                            <p class="mb-1 text-dark">Pengambilan dan pembayaran pesanan dilakukan di tempat.</p>
+                            <p class="mb-0 text-dark fw-bold">Selamat belanja!</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     @endif
 
     @if ($current == 'pembeli.belisekarang')
-        <div class="container pl-5" style="max-width: 1300px">
+        <div class="container px-3 px-md-4 px-lg-5">
             <div class="row mb-5">
-                <div class="col-lg-7">
-                    <div class="col-lg-12 mb-4" style="border: solid 1px; border-radius: 5px">
-                        <div class="row p-2">
-                            <div class="col-12">
-                                <h5 class="text-dark" style="font-weight:bold ">Pemesan</h5>
-                            </div>
-                            <div class="col-12">
-                                <span class="text-dark">{{Auth::user()->name}}</span>
-                            </div>
-                            <div class="col-12">
-                                <span class="text-dark">{{Auth::user()->no_telp}}</span>
-                            </div>
-                            <div class="col-12">
-                                <span class="text-dark">{{Auth::user()->role_pengguna}}</span>
-                            </div>
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="fw-bold text-dark">Pemesan</h5>
+                            <p class="mb-1 text-dark">{{ Auth::user()->name }}</p>
+                            <p class="mb-1 text-dark">{{ Auth::user()->no_telp }}</p>
+                            <p class="mb-0 text-dark">{{ Auth::user()->role_pengguna }}</p>
                         </div>
                     </div>
-                    <div class="col-lg-12 mb-4" style="border: solid 1px; border-radius: 5px">
-                        <div class="row p-4">
-                            <div class="col-lg-2" style="place-self: center">
-                                <img src="/product-images/{{ $produk->gambar_produk }}" alt=""
-                                    class="w-100">
+                    <div class="card mb-4">
+                        <div class="row g-0 p-3">
+                            <div class="col-4 col-md-2 d-flex align-items-center">
+                                <img src="/product-images/{{ $produk->gambar_produk }}" class="img-fluid rounded" alt="produk">
                             </div>
-                            <div class="col-lg-6" style="place-self: center">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <span class="text-dark"
-                                            style="font-weight: bold">{{ $produk->nama_produk }}</span>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <span class="text-dark">Variasi : {{$var}}</span>
-                                    </div>
-
-                                    <div class="col-sm-12">
-                                        <span class="text-dark">Jumlah Produk : {{ $jlh }}</span>
-                                    </div>
-                                </div>
+                            <div class="col-8 col-md-6">
+                                <h6 class="fw-bold text-dark">{{ $produk->nama_produk }}</h6>
+                                <p class="mb-1 text-dark">Variasi: {{ $var }}</p>
+                                <p class="mb-0 text-dark">Jumlah Produk: {{ $jlh }}</p>
                             </div>
-                            <div class="col-lg-4 text-dark"
-                                style="text-align-last: right; font-weight:bold; place-self:center">
-                                <div class="row">
-                                    <div class="col-12">
-                                        Subtotal
-                                    </div>
-                                    <div class="col-12">
-                                        Rp. <?php
-                                        $angka = $produk->harga * $jlh;
-                                        echo number_format($angka, 0, ',', '.');
-                                        ?>
-                                    </div>
-                                </div>
+                            <div class="col-md-4 text-end d-flex flex-column justify-content-center">
+                                <p class="mb-1 text-dark fw-bold">Subtotal</p>
+                                <p class="mb-0 text-dark">Rp. {{ number_format($produk->harga * $jlh, 0, ',', '.') }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-4 ml-3">
-                    <div class="row">
-                        <div class="col-lg-12"
-                            style="border:solid 1px; border-radius: 5px;max-height:250px; min-height:250px">
-                            <div class="row pt-4 ml-1">
-                                <div class="col-lg-12 pb-2">
-                                    <h5 class="text-dark" style="font-weight: bold">Total Pesanan</h5>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <h5 class="text-dark">Total Produk</h5>
-                                        </div>
-                                        <div class="col-6 pr-5" style="text-align-last: right">
-                                            <h6>{{ $jlh }} Produk</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <h5 class="text-dark">Total Harga Produk</h5>
-                                        </div>
-                                        <div class="col-6 pr-5" style="text-align-last: right">
-                                            <h6>Rp. <?php
-                                            $angka = $produk->harga * $jlh;
-                                            echo number_format($angka, 0, ',', '.');
-                                            ?></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="pr-5" color="black" size="5" width="75%">
-                                <form action="/checkout/sekarang/produk" method="post">
-                                    @csrf
-                                    <div class="col-lg-12 pt-2" style="text-align-last:center">
-                                        @php
-                                            $variasi = implode(', ', $aVariasi)
-                                        @endphp
-                                        <input type="hidden" name="jlh_pesanan" id="jlh_pesanan"
-                                            value="{{ $jlh }}">
-                                            <input type="hidden" name="aVariasi" value="{{$variasi}}">
-                                        <input type="hidden" name="idPro" id="idPro"
-                                            value="{{ $produk->id_produk }}">
-                                        <p><button type="submit" class="buy-now btn btn-sm btn-primary">Pesan
-                                                Sekarang</button></p>
-                                    </div>
-                                </form>
+                <div class="col-lg-4">
+                    <div class="card mb-3" style="min-height: 250px">
+                        <div class="card-body">
+                            <h5 class="fw-bold text-dark">Total Pesanan</h5>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-dark">Total Produk</span>
+                                <span>{{ $jlh }} Produk</span>
                             </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-dark">Total Harga Produk</span>
+                                <span>Rp. {{ number_format($produk->harga * $jlh, 0, ',', '.') }}</span>
+                            </div>
+                            <hr>
+                            <form action="/checkout/sekarang/produk" method="POST">
+                                @csrf
+                                @php $variasi = implode(', ', $aVariasi); @endphp
+                                <input type="hidden" name="jlh_pesanan" value="{{ $jlh }}">
+                                <input type="hidden" name="aVariasi" value="{{ $variasi }}">
+                                <input type="hidden" name="idPro" value="{{ $produk->id_produk }}">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-sm btn-primary">Pesan Sekarang</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="col-lg-12 mt-3" style="border:solid 1px; border-radius: 5px">
-                            <div class="row pt-4 pb-4 ml-1">
-                                <div class="col-lg-12 pb-2">
-                                    <h6 class="text-dark" style="font-weight: bold">Informasi Penting!</h6>
-                                </div>
-                                <div class="col-lg-12">
-                                    <span class="text-dark">Pengambilan dan pembayaran pesanan dilakukan di
-                                        tempat.</span>
-                                </div>
-                                <div class="col-lg-12">
-                                    <span class="text-dark" style="font-weight: bold">Selamat belanja!</span>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="fw-bold text-dark">Informasi Penting!</h6>
+                            <p class="mb-1 text-dark">Pengambilan dan pembayaran pesanan dilakukan di tempat.</p>
+                            <p class="mb-0 text-dark fw-bold">Selamat belanja!</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     @endif
-
 </div>

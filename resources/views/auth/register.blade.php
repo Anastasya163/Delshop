@@ -165,7 +165,7 @@
 
                                 <div class=" col-12 mt-4">
                                     <button type="submit" class="btn btn-primary w-100">
-                                        {{ __('Register') }}
+                                        {{ __('Daftar') }}
                                     </button>
                                 </div>
                                 <div class=" row col-12 justify-content-center mt-3">

@@ -86,39 +86,44 @@
                                         $jumlah_detail = count($detail);
                                         $sisa = $jumlah_detail - 1;
                                     @endphp
-                                    <div class="col-lg-2" style="place-self: center">
-                                        <img src="/product-images/{{$detail_pes->gambar_produk}}" alt="" class="w-100">
+                                <div class="col-lg-2 d-flex justify-content-center align-items-center">
+                                    <img src="/product-images/{{$detail_pes->gambar_produk}}" alt="" class="img-fluid" style="max-height: 150px; object-fit: contain;">
                                     </div>
                                     @if ($pes->status == 'Menunggu')
                                         <div class="col-lg-6" style="place-self: center">
                                             <div class="row">
-                                                <div class="col-sm-12">
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
                                                     <span class="pr-3"
                                                         style="color: #00337C;font-weight:bold">{{ $pes->kode }}</span>
                                                     {{ $pes->tanggal }}
                                                 </div>
 
-                                                <div class="col-sm-12">
-                                                    <span class="text-dark pr-2">{{ $detail_pes->nama_produk }}</span>
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
+                                                <div>
+                                                    <span class="text-dark me-2">{{ $detail_pes->nama_produk }}</span>
                                                     @if ($sisa != 0)
-                                                        <small><a href="/detail-pesanan/{{ $pes->kode }}"
-                                                                class="p-1 text-white bg-secondary"
-                                                                style="border-radius: 3px">+{{ $sisa }}
-                                                                lainnya</a></small>
+                                                        <small>
+                                                            <a href="/detail-pesanan/{{ $pes->kode }}" class="p-1 text-white bg-secondary rounded">
+                                                                +{{ $sisa }} lainnya
+                                                            </a>
+                                                        </small>
                                                     @endif
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Jumlah Produk : {{ $j }}</span>
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Nama Pemesan : {{ $pes->name }}</span>
                                                 </div>
+                                            </div>
                                             </div>
                                         </div>
                                     @else
                                         <div class="col-lg-6" style="place-self: center">
                                             <div class="row">
-                                                <div class="col-sm-12">
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
                                                     <span class="pr-3"
                                                         style="color: #00337C;font-weight:bold">{{ $pes->kode }}</span>
                                                     {{ $pes->tanggal }}
@@ -142,21 +147,26 @@
                                                     $jumlah_detail = count($detail);
                                                     $sisa = $jumlah_detail - 1;
                                                 @endphp
-                                                <div class="col-sm-12">
-                                                    <span class="text-dark pr-2">{{ $detail_pes->nama_produk }}</span>
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
+                                                <div>
+                                                    <span class="text-dark me-2">{{ $detail_pes->nama_produk }}</span>
                                                     @if ($sisa != 0)
-                                                        <small><a href="/detail-pesanan/{{ $pes->kode }}"
-                                                                class="p-1 text-white bg-secondary"
-                                                                style="border-radius: 3px">+{{ $sisa }}
-                                                                lainnya</a></small>
+                                                        <small>
+                                                            <a href="/detail-pesanan/{{ $pes->kode }}" class="p-1 text-white bg-secondary rounded">
+                                                                +{{ $sisa }} lainnya
+                                                            </a>
+                                                        </small>
                                                     @endif
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Jumlah Produk : {{ $j }}</span>
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Nama Pemesan : {{ $pes->name }}</span>
                                                 </div>
+                                            </div>
                                             </div>
                                         </div>
                                     @endif
@@ -240,39 +250,44 @@
                                         $jumlah_detail = count($detail);
                                         $sisa = $jumlah_detail - 1;
                                     @endphp
-                                    <div class="col-lg-2" style="place-self: center">
-                                        <img src="/product-images/{{$detail_pes->gambar_produk}}" alt="" class="w-100">
+                                    <div class="col-lg-2 col-4 d-flex justify-content-center align-items-center text-center mx-auto mb-2">
+                                        <img src="/product-images/{{$detail_pes->gambar_produk}}" alt="" class="img-fluid" style="max-height: 150px; object-fit: contain;">
                                     </div>
                                     @if ($pes->status == 'Menunggu')
                                         <div class="col-lg-6" style="place-self: center">
                                             <div class="row">
-                                                <div class="col-sm-12">
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
                                                     <span class="pr-3"
                                                         style="color: #00337C;font-weight:bold">{{ $pes->kode }}</span>
                                                     {{ $pes->tanggal }}
                                                 </div>
 
-                                                <div class="col-sm-12">
-                                                    <span class="text-dark pr-2">{{ $detail_pes->nama_produk }}</span>
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
+                                                <div>
+                                                    <span class="text-dark me-2">{{ $detail_pes->nama_produk }}</span>
                                                     @if ($sisa != 0)
-                                                        <small><a href="/detail-pesanan/{{ $pes->kode }}"
-                                                                class="p-1 text-white bg-secondary"
-                                                                style="border-radius: 3px">+{{ $sisa }}
-                                                                lainnya</a></small>
+                                                        <small>
+                                                            <a href="/detail-pesanan/{{ $pes->kode }}" class="p-1 text-white bg-secondary rounded">
+                                                                +{{ $sisa }} lainnya
+                                                            </a>
+                                                        </small>
                                                     @endif
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Jumlah Produk : {{ $j }}</span>
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Nama Pemesan : {{ $pes->name }}</span>
                                                 </div>
+                                            </div>
                                             </div>
                                         </div>
                                     @else
                                         <div class="col-lg-6" style="place-self: center">
                                             <div class="row">
-                                                <div class="col-sm-12">
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
                                                     <span class="pr-3"
                                                         style="color: #00337C;font-weight:bold">{{ $pes->kode }}</span>
                                                     {{ $pes->tanggal }}
@@ -296,21 +311,26 @@
                                                     $jumlah_detail = count($detail);
                                                     $sisa = $jumlah_detail - 1;
                                                 @endphp
-                                                <div class="col-sm-12">
-                                                    <span class="text-dark pr-2">{{ $detail_pes->nama_produk }}</span>
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
+                                                <div>
+                                                    <span class="text-dark me-2">{{ $detail_pes->nama_produk }}</span>
                                                     @if ($sisa != 0)
-                                                        <small><a href="/detail-pesanan/{{ $pes->kode }}"
-                                                                class="p-1 text-white bg-secondary"
-                                                                style="border-radius: 3px">+{{ $sisa }}
-                                                                lainnya</a></small>
+                                                        <small>
+                                                            <a href="/detail-pesanan/{{ $pes->kode }}" class="p-1 text-white bg-secondary rounded">
+                                                                +{{ $sisa }} lainnya
+                                                            </a>
+                                                        </small>
                                                     @endif
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Jumlah Produk : {{ $j }}</span>
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Nama Pemesan : {{ $pes->name }}</span>
                                                 </div>
+                                            </div>
                                             </div>
                                         </div>
                                     @endif
@@ -394,33 +414,38 @@
                                         $jumlah_detail = count($detail);
                                         $sisa = $jumlah_detail - 1;
                                     @endphp
-                                    <div class="col-lg-2" style="place-self: center">
-                                        <img src="/product-images/{{$detail_pes->gambar_produk}}" alt="" class="w-100">
+                                    <div class="col-lg-2 col-4 d-flex justify-content-center align-items-center text-center mx-auto mb-2">
+                                        <img src="/product-images/{{$detail_pes->gambar_produk}}" alt="" class="img-fluid" style="max-height: 150px; object-fit: contain;">
                                     </div>
                                     @if ($pes->status == 'Menunggu')
                                         <div class="col-lg-4" style="place-self: center">
                                             <div class="row">
-                                                <div class="col-sm-12">
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
                                                     <span class="pr-3"
                                                         style="color: #00337C;font-weight:bold">{{ $pes->kode }}</span>
                                                     {{ $pes->tanggal }}
                                                 </div>
 
-                                                <div class="col-sm-12">
-                                                    <span class="text-dark pr-2">{{ $detail_pes->nama_produk }}</span>
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
+                                                <div>
+                                                    <span class="text-dark me-2">{{ $detail_pes->nama_produk }}</span>
                                                     @if ($sisa != 0)
-                                                        <small><a href="/detail-pesanan/{{ $pes->kode }}"
-                                                                class="p-1 text-white bg-secondary"
-                                                                style="border-radius: 3px">+{{ $sisa }}
-                                                                lainnya</a></small>
+                                                        <small>
+                                                            <a href="/detail-pesanan/{{ $pes->kode }}" class="p-1 text-white bg-secondary rounded">
+                                                                +{{ $sisa }} lainnya
+                                                            </a>
+                                                        </small>
                                                     @endif
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Jumlah Produk : {{ $j }}</span>
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Nama Pemesan : {{ $pes->name }}</span>
                                                 </div>
+                                            </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-2" style="place-self: center; text-align:center">
@@ -501,7 +526,7 @@
                                     @else
                                         <div class="col-lg-6" style="place-self: center">
                                             <div class="row">
-                                                <div class="col-sm-12">
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
                                                     <span class="pr-3"
                                                         style="color: #00337C;font-weight:bold">{{ $pes->kode }}</span>
                                                     {{ $pes->tanggal }}
@@ -525,21 +550,26 @@
                                                     $jumlah_detail = count($detail);
                                                     $sisa = $jumlah_detail - 1;
                                                 @endphp
-                                                <div class="col-sm-12">
-                                                    <span class="text-dark pr-2">{{ $detail_pes->nama_produk }}</span>
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
+                                                <div>
+                                                    <span class="text-dark me-2">{{ $detail_pes->nama_produk }}</span>
                                                     @if ($sisa != 0)
-                                                        <small><a href="/detail-pesanan/{{ $pes->kode }}"
-                                                                class="p-1 text-white bg-secondary"
-                                                                style="border-radius: 3px">+{{ $sisa }}
-                                                                lainnya</a></small>
+                                                        <small>
+                                                            <a href="/detail-pesanan/{{ $pes->kode }}" class="p-1 text-white bg-secondary rounded">
+                                                                +{{ $sisa }} lainnya
+                                                            </a>
+                                                        </small>
                                                     @endif
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Jumlah Produk : {{ $j }}</span>
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Nama Pemesan : {{ $pes->name }}</span>
                                                 </div>
+                                            </div>
                                             </div>
                                         </div>
                                     @endif
@@ -623,33 +653,38 @@
                                         $jumlah_detail = count($detail);
                                         $sisa = $jumlah_detail - 1;
                                     @endphp
-                                    <div class="col-lg-2" style="place-self: center">
-                                        <img src="/product-images/{{$detail_pes->gambar_produk}}" alt="" class="w-100">
+                                    <div class="col-lg-2 col-4 d-flex justify-content-center align-items-center text-center mx-auto mb-2">
+                                        <img src="/product-images/{{$detail_pes->gambar_produk}}" alt="" class="img-fluid" style="max-height: 150px; object-fit: contain;">
                                     </div>
                                     @if ($pes->status == 'Menunggu')
                                         <div class="col-lg-4" style="place-self: center">
                                             <div class="row">
-                                                <div class="col-sm-12">
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
                                                     <span class="pr-3"
                                                         style="color: #00337C;font-weight:bold">{{ $pes->kode }}</span>
                                                     {{ $pes->tanggal }}
                                                 </div>
 
-                                                <div class="col-sm-12">
-                                                    <span class="text-dark pr-2">{{ $detail_pes->nama_produk }}</span>
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
+                                                <div>
+                                                    <span class="text-dark me-2">{{ $detail_pes->nama_produk }}</span>
                                                     @if ($sisa != 0)
-                                                        <small><a href="/detail-pesanan/{{ $pes->kode }}"
-                                                                class="p-1 text-white bg-secondary"
-                                                                style="border-radius: 3px">+{{ $sisa }}
-                                                                lainnya</a></small>
+                                                        <small>
+                                                            <a href="/detail-pesanan/{{ $pes->kode }}" class="p-1 text-white bg-secondary rounded">
+                                                                +{{ $sisa }} lainnya
+                                                            </a>
+                                                        </small>
                                                     @endif
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Jumlah Produk : {{ $j }}</span>
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Nama Pemesan : {{ $pes->name }}</span>
                                                 </div>
+                                            </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-2" style="place-self: center; text-align:center">
@@ -730,7 +765,7 @@
                                     @else
                                         <div class="col-lg-6" style="place-self: center">
                                             <div class="row">
-                                                <div class="col-sm-12">
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
                                                     <span class="pr-3"
                                                         style="color: #00337C;font-weight:bold">{{ $pes->kode }}</span>
                                                     {{ $pes->tanggal }}
@@ -754,21 +789,26 @@
                                                     $jumlah_detail = count($detail);
                                                     $sisa = $jumlah_detail - 1;
                                                 @endphp
-                                                <div class="col-sm-12">
-                                                    <span class="text-dark pr-2">{{ $detail_pes->nama_produk }}</span>
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
+                                                <div>
+                                                    <span class="text-dark me-2">{{ $detail_pes->nama_produk }}</span>
                                                     @if ($sisa != 0)
-                                                        <small><a href="/detail-pesanan/{{ $pes->kode }}"
-                                                                class="p-1 text-white bg-secondary"
-                                                                style="border-radius: 3px">+{{ $sisa }}
-                                                                lainnya</a></small>
+                                                        <small>
+                                                            <a href="/detail-pesanan/{{ $pes->kode }}" class="p-1 text-white bg-secondary rounded">
+                                                                +{{ $sisa }} lainnya
+                                                            </a>
+                                                        </small>
                                                     @endif
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Jumlah Produk : {{ $j }}</span>
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Nama Pemesan : {{ $pes->name }}</span>
                                                 </div>
+                                            </div>
                                             </div>
                                         </div>
                                     @endif
@@ -852,33 +892,38 @@
                                         $jumlah_detail = count($detail);
                                         $sisa = $jumlah_detail - 1;
                                     @endphp
-                                    <div class="col-lg-2" style="place-self: center">
-                                        <img src="/product-images/{{$detail_pes->gambar_produk}}" alt="" class="w-100">
+                                    <div class="col-lg-2 col-4 d-flex justify-content-center align-items-center text-center mx-auto mb-2">
+                                        <img src="/product-images/{{$detail_pes->gambar_produk}}" alt="" class="img-fluid" style="max-height: 150px; object-fit: contain;">
                                     </div>
                                     @if ($pes->status == 'Menunggu')
                                         <div class="col-lg-4" style="place-self: center">
                                             <div class="row">
-                                                <div class="col-sm-12">
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
                                                     <span class="pr-3"
                                                         style="color: #00337C;font-weight:bold">{{ $pes->kode }}</span>
                                                     {{ $pes->tanggal }}
                                                 </div>
 
-                                                <div class="col-sm-12">
-                                                    <span class="text-dark pr-2">{{ $detail_pes->nama_produk }}</span>
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
+                                                <div>
+                                                    <span class="text-dark me-2">{{ $detail_pes->nama_produk }}</span>
                                                     @if ($sisa != 0)
-                                                        <small><a href="/detail-pesanan/{{ $pes->kode }}"
-                                                                class="p-1 text-white bg-secondary"
-                                                                style="border-radius: 3px">+{{ $sisa }}
-                                                                lainnya</a></small>
+                                                        <small>
+                                                            <a href="/detail-pesanan/{{ $pes->kode }}" class="p-1 text-white bg-secondary rounded">
+                                                                +{{ $sisa }} lainnya
+                                                            </a>
+                                                        </small>
                                                     @endif
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Jumlah Produk : {{ $j }}</span>
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Nama Pemesan : {{ $pes->name }}</span>
                                                 </div>
+                                            </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-2" style="place-self: center; text-align:center">
@@ -959,7 +1004,7 @@
                                     @else
                                         <div class="col-lg-6" style="place-self: center">
                                             <div class="row">
-                                                <div class="col-sm-12">
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
                                                     <span class="pr-3"
                                                         style="color: #00337C;font-weight:bold">{{ $pes->kode }}</span>
                                                     {{ $pes->tanggal }}
@@ -983,21 +1028,26 @@
                                                     $jumlah_detail = count($detail);
                                                     $sisa = $jumlah_detail - 1;
                                                 @endphp
-                                                <div class="col-sm-12">
-                                                    <span class="text-dark pr-2">{{ $detail_pes->nama_produk }}</span>
+                                                <div class="col-12 d-flex flex-column align-items-center align-items-lg-start text-center text-lg-start">
+                                                <div>
+                                                    <span class="text-dark me-2">{{ $detail_pes->nama_produk }}</span>
                                                     @if ($sisa != 0)
-                                                        <small><a href="/detail-pesanan/{{ $pes->kode }}"
-                                                                class="p-1 text-white bg-secondary"
-                                                                style="border-radius: 3px">+{{ $sisa }}
-                                                                lainnya</a></small>
+                                                        <small>
+                                                            <a href="/detail-pesanan/{{ $pes->kode }}" class="p-1 text-white bg-secondary rounded">
+                                                                +{{ $sisa }} lainnya
+                                                            </a>
+                                                        </small>
                                                     @endif
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Jumlah Produk : {{ $j }}</span>
                                                 </div>
-                                                <div class="col-sm-12">
+
+                                                <div>
                                                     <span class="text-dark">Nama Pemesan : {{ $pes->name }}</span>
                                                 </div>
+                                            </div>
                                             </div>
                                         </div>
                                     @endif

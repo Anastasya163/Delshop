@@ -268,15 +268,19 @@
                                                                                             <div class="row">
                                                                                                 <small
                                                                                                     style="font-weight: bold">{{ $det->nama_produk }}</small><br>
-                                                                                                @if ($varPesanan != "")
+                                                                                                    @if ($varPesanan != "")
                                                                                                     @for ($i = 0; $i < count($varPesanan); $i++)
-                                                                                                        <small>{{ $varPesanan[$i][1] }}</small>
+                                                                                                        @if (isset($varPesanan[$i][1]))  <!-- Cek apakah indeks 1 ada -->
+                                                                                                            <small>{{ $varPesanan[$i][1] }}</small>
+                                                                                                        @else
+                                                                                                            <small>-</small>  <!-- Tampilkan tanda '-' jika tidak ada -->
+                                                                                                        @endif
                                                                                                         @if ($i < count($varPesanan) - 1)
                                                                                                             ,
                                                                                                         @endif
                                                                                                     @endfor
                                                                                                 @else
-                                                                                                        <small>-</small>           
+                                                                                                    <small>-</small>
                                                                                                 @endif
                                                                                             </div>
                                                                                         </div>

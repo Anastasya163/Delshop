@@ -61,7 +61,7 @@
 
     <div class="site-section site-blocks-2">
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-md-12 text-center">
                     <h2 class="h3 mb-3 text-black">Kategori Produk</h2>
                 </div>
@@ -70,8 +70,10 @@
                         <div class="col-sm-6 col-md-6 col-lg-2 mb-4 mb-lg-0">
                             <a class="block-2-item" href="/produk/{{ $katpro->kategori }}">
                                 <figure class="image">
-                                    <img src="/kategori-produk-images/{{ $katpro->gambar_kategori }}" alt=""
-                                        class="img-fluid w-100" style="max-height: 150px;min-height: 150px">
+                                        <img src="/kategori-produk-images/{{ $katpro->gambar_kategori }}"
+                                        alt="Gambar Kategori"
+                                        class="img-fluid rounded w-100"
+                                        style="height: 150px; object-fit: contain;">
                                 </figure>
                                 <div class="text">
                                     <span class="text-uppercase">kategori</span>
@@ -104,7 +106,7 @@
                                 $jlhterjual += $terjual->jumlah;
                             }
                         @endphp
-                            <div class="item col-10">
+                            <div class="item col-12">
                                 <div class="block-4 text-center">
                                     <figure class="block-4-image">
                                         <img src="/product-images/{{$terbaru->gambar_produk}}" alt="Image placeholder" class="img-fluid" style="min-height: 250px; max-height: 250px">
@@ -122,7 +124,6 @@
                                 </div>
                             </div>
                         @endforeach
-
                     </div>
                 </div>
             </div>

@@ -110,35 +110,38 @@
                             </h6>
                         </div>
                     </div>
-                    <div class="row col-md-12">
+                    <div class="row col-lg-12">
                         @guest
-                            <div class="col-md-6">
-                                <p><button type="submit" class="buy-now btn btn-sm btn-primary">Tambah ke
-                                        Keranjang</button></p>
-                            </div>
-                            <div class="col-md-6">
-                                <p><button type="button" onclick="belisekarang()"
-                                        class="buy-now btn btn-sm btn-primary">Beli Sekarang</button></p>
-                                <input type="hidden" name="idPro" id="idPro" value="{{ $produk->id_produk }}">
-                            </div>
+                                <div class="col-sm">
+                                    <button type="submit" class="buy-now btn btn-sm btn-primary">Tambah ke
+                                            Keranjang</button>
+                                </div>
+                                <br><br>
+                                <div class="col-sm">
+                                    <button type="button" onclick="belisekarang()"
+                                            class="buy-now btn btn-sm btn-primary">Beli Sekarang</button>
+                                    <input type="hidden" name="idPro" id="idPro" value="{{ $produk->id_produk }}">
+                                </div>
                         @else
                             @if ($produk->role_pembeli == 'Publik')
-                                <div class="col-md-6">
+                                <div class="col-sm">
                                     <p><button type="submit" class="buy-now btn btn-sm btn-primary">Tambah ke
                                             Keranjang</button></p>
                                 </div>
-                                <div class="col-md-6">
+                                <br><br>
+                                <div class="col-sm">
                                     <p><button type="button" onclick="belisekarang()"
                                             class="buy-now btn btn-sm btn-primary">Beli Sekarang</button></p>
                                     <input type="hidden" name="idPro" id="idPro" value="{{ $produk->id_produk }}">
                                 </div>
                             @else
                                 @if (Auth::user()->role_pengguna != $produk->role_pembeli)
-                                    <div class="col-md-6">
+                                    <div class="col-sm">
                                         <p><button type="submit" class="buy-now btn btn-sm btn-primary" disabled>Tambah ke
                                                 Keranjang</button></p>
                                     </div>
-                                    <div class="col-md-6">
+                                    <br><br>
+                                    <div class="col-sm">
                                         <p><button type="button" onclick="belisekarang()"
                                                 class="buy-now btn btn-sm btn-primary" disabled>Beli Sekarang</button></p>
                                         <input type="hidden" name="idPro" id="idPro"
@@ -152,11 +155,12 @@
                                         </span>
                                     </div>
                                 @else
-                                    <div class="col-md-6">
+                                    <div class="col-sm">
                                         <p><button type="submit" class="buy-now btn btn-sm btn-primary">Tambah ke
                                                 Keranjang</button></p>
                                     </div>
-                                    <div class="col-md-6">
+                                    <br><br>
+                                    <div class="col-sm">
                                         <p><button type="button" onclick="belisekarang()"
                                                 class="buy-now btn btn-sm btn-primary">Beli Sekarang</button></p>
                                         <input type="hidden" name="idPro" id="idPro"

@@ -13,9 +13,15 @@ class Controller extends BaseController
     use AuthorizesRequests, ValidatesRequests;
 
     public function dash_pembeli(){
-        $kategori_produk = KategoriProdukModel::where('status_kategori','Aktif')->get();
-        $produk_terbaru = Produk::orderBy('created_at', 'desc')->limit(5)->get();
-        return view('home.dashboard_pembeli',[
+        $kategori_produk = KategoriProdukModel::where('status_kategori', 'Aktif')->get();
+
+        // Memfilter produk berdasarkan status
+        $produk_terbaru = Produk::where('status_produk', 'Aktif') // 
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
+
+        return view('home.dashboard_pembeli', [
             'kategori_produk' => $kategori_produk,
             'produk_terbaru' => $produk_terbaru
         ]);

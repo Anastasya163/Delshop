@@ -32,7 +32,7 @@ class PesananController extends Controller
         foreach ($detail_keranjang as $data) {
             $jumlah_pesanan[] = $data->jumlah;
         }
-        $total_pesanan = array_sum($jumlah_pesanan);
+        $total_pesanan = $detail_keranjang->sum('jumlah');
         return view('pembeli.keranjang', [
             'keranjang' => $keranjang,
             'detail_keranjang' => $detail_keranjang,
@@ -369,7 +369,7 @@ class PesananController extends Controller
 
     public function proseskonfirmasi($id)
     {
-        $proseskonfirmasi = Pesanan::where('kode', $id)->first();
+        $proseskonfirmasi = Pesanan::where('id', $id)->first();
         $proseskonfirmasi->update([
             'status' => "Diproses"
         ]);

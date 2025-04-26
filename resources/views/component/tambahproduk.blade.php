@@ -8,6 +8,7 @@
                     <div class="form-group mb-3">
                         <label for="nama_produk">Nama Produk</label>
                         <input type="text" id="nama_produk" name="nama_produk" class="form-control" placeholder="">
+                        <p style="color:red" id="error_product_name"></p>
                     </div>
                     <div class="form-group mb-3">
                         <label for="harga_jual">Harga Jual</label>
@@ -16,6 +17,7 @@
                                 <span class="input-group-text">Rp.</span>
                             </div>
                             <input type="number" class="form-control" aria-label="" id="harga_jual" name="harga_jual">
+                            <p style="color:red" id="error_price"></p>
                         </div>
                     </div>
                     <div class="form-group mb-3">
@@ -26,11 +28,13 @@
                             </div>
                             <input type="number" class="form-control" aria-label="" id="harga_modal"
                                 name="harga_modal">
+                            <p style="color:red" id="error_modal"></p>
                         </div>
                     </div>
                     <div class="form-group mb-3">
                         <label for="jumlah_produk">Jumlah Produk</label>
                         <input type="number" id="jumlah_produk" name="jumlah_produk" class="form-control">
+                        <p style="color:red" id="error_quantity"></p>
                     </div>
                 </div>
             </div>
@@ -46,6 +50,7 @@
                                 <option value="{{$kapro->kategori}}">{{$kapro->kategori}}</option>
                             @endforeach
                         </select>
+                        <p style="color:red" id="error_kategori"></p>
                     </div>
                     <div class="form-group mb-3">
                         <label for="kategori_pembeli">Kategori Pembeli</label>
@@ -57,12 +62,14 @@
                             <option value="Pegawai">Pegawai</option>
                             <option value="Publik">Publik</option>
                         </select>
+                        <p style="color:red" id="error_customer"></p>
                     </div>
                     <div class="form-group mb-3">
                         <label for="gambar_produk">Gambar Produk</label>
                         <div class="custom-file">
                             <input type="file" class="form-control-file" id="gambar_produk" name="gambar_produk">
                         </div>
+                        <p style="color:red" id="error_image"></p>
                     </div>
                 </div>
             </div>
@@ -95,18 +102,63 @@
                 <button class="btn btn-success col-md-1" type="button" onclick="tambahConfirmation()">Tambah</button>
                 <script>
                     function tambahConfirmation() {
-                        Swal.fire({
+                        let produkName = document.getElementById("nama_produk").value.trim();
+                        let errorProductName = document.getElementById("error_product_name");
+                        let hargaJual = document.getElementById("harga_jual").value.trim();
+                        let errorPrice = document.getElementById("error_price");
+                        let hargaModal = document.getElementById("harga_modal").value.trim();
+                        let errorModal = document.getElementById("error_modal");
+                        let jumlahProduk = document.getElementById("jumlah_produk").value.trim();
+                        let errorQuantity = document.getElementById("error_quantity");
+                        let kategoriProduk = document.getElementById("kategori_produk").value.trim();
+                        let errorKategori = document.getElementById("error_kategori");
+                        let kategoriPembeli = document.getElementById("kategori_pembeli").value.trim();
+                        let errorCustomer = document.getElementById("error_customer");
+                        let gambarProduk = document.getElementById("gambar_produk").value.trim();
+                        let errorImage = document.getElementById("error_image");
+
+                        if(produkName === ""){
+                            errorProductName.innerHTML = "Nama produk harus diisi";
+                            return;
+                        }
+                        else if(hargaJual === ""){
+                            errorPrice.innerHTML = "Harga jual produk harus diisi";
+                            return;
+                        }
+                        else if(hargaModal === ""){
+                            errorModal.innerHTML = "Harga modal produk harus diisi";
+                            return;
+                        }
+                        else if(jumlahProduk === ""){
+                            errorQuantity.innerHTML = "Jumlah produk harus diisi";
+                            return;
+                        }
+                        else if(kategoriProduk == "Pilih Kategori Produk"){
+                            errorKategori.innerHTML = "Pilih Kategori Produk";
+                            return;
+                        }
+                        else if(kategoriPembeli == "Pilih Kategori Pembeli"){
+                            errorCustomer.innerHTML = "Pilih Kategori Pembeli";
+                            return;
+                        }
+                        else if(gambarProduk === ""){
+                            errorImage.innerHTML = "Masukkan gambar produk";
+                            return;
+                        }
+                        else{
+                            Swal.fire({
                             title: 'Konfirmasi',
                             text: 'Apakah Anda yakin ingin menambahkan data ini?',
                             icon: 'warning',
                             showCancelButton: true,
                             confirmButtonText: 'Ya',
                             cancelButtonText: 'Batal',
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                document.getElementById('form-tambahproduk').submit();
-                            }
-                        });
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    document.getElementById('form-tambahproduk').submit();
+                                }
+                            });
+                        }
                     }
                 </script>
                 <button class="btn btn-secondary col-md-1 ml-3 mr-3" type="reset">Reset</button>

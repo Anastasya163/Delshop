@@ -96,7 +96,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="nonloop-block-3 owl-carousel">
+                    <div class="nonloop-block-3 owl-carousel d-flex justify-content-center">
                         @foreach ($produk_terbaru as $terbaru)
                         @php
                             $jumlahTerjual = App\Models\DetailPesanan::join('pesanans','pesanans.id','=', 'pesanandetails.pesanan_id')->where('pesanandetails.produk_id', $terbaru->id_produk)->where('pesanans.status', 'Selesai')->get();

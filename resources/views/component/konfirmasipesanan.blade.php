@@ -63,11 +63,13 @@
                                         <span class="text-muted sr-only">Action</span>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <button onclick="konfPes()" class="dropdown-item">Konfirmasi</button>
-                                        <input type="hidden" name="idPes" id="idPes" value="{{ $pes->kode }}">
+                                        <button onclick="konfPes({{$pes->id}})" class="dropdown-item">Konfirmasi</button>
+                                        <input type="hidden" name="idPes" id="idPes" value="{{ $pes->id }}">
                                         <script>
-                                            function konfPes() {
-                                                var kode = $('#idPes').val();
+                                            function konfPes(code) {
+                                                // var kode = document.getElementById('idPes').value;
+                                                console.log(code);
+
                                                 Swal.fire({
                                                     title: 'Konfirmasi',
                                                     text: 'Apakah Anda yakin ingin mengkonfirmasi pesanan ini?',
@@ -77,7 +79,7 @@
                                                     cancelButtonText: 'Batal',
                                                 }).then((result) => {
                                                     if (result.isConfirmed) {
-                                                        window.location.href = '/proses/konfirmasi/pesanan/' + kode;
+                                                        window.location.href = '/proses/konfirmasi/pesanan/' + code;
                                                     }
                                                 });
                                             }

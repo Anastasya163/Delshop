@@ -29,6 +29,10 @@
         .btn-extra-small {
             font-size: 10px;
         }
+        .scrollable-list a.notification-link {
+        white-space: normal;
+        word-break: break-word;
+}
     </style>
 
 </head>
@@ -119,11 +123,11 @@
                         <span class="count">{{ auth()->user()->unreadNotifications->count() }}</span>
                     </a>
 
-                    <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4 scrollable-list"
-                        aria-labelledby="dropdownMenuButton"
-                        style="max-height: 300px;min-width: 480px; overflow-y:auto; top:0rem !important;right: 1.0rem !important">
-                        <span class="text-dark text-lg ml-3"
-                        style="margin-bottom: 50%; font-weight:bold">Notifikasi!</span><br>
+                    <div class="dropdown-menu-container d-flex justify-content-center w-100">
+                        <ul class="dropdown-menu px-2 py-3 me-sm-n4 scrollable-list"
+                            aria-labelledby="dropdownMenuButton"
+                            style="max-height: 300px; min-width: 280px; max-width: 90vw; overflow-y: auto;">
+                            <span class="text-dark text-lg ml-3" style="margin-bottom: 50%; font-weight:bold">Notifikasi!</span><br>
                         @if (auth()->user()->unreadNotifications->count() == 0)
                                         <a class="dropdown-item border-radius-md mt-3" href="javascript:;"
                                         style="background-color: #F5F7F8">

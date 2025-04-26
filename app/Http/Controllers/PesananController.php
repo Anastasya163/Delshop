@@ -369,7 +369,7 @@ class PesananController extends Controller
 
     public function proseskonfirmasi($id)
     {
-        $proseskonfirmasi = Pesanan::where('id', $id)->first();
+        $proseskonfirmasi = Pesanan::where('kode', $id)->first();
         $proseskonfirmasi->update([
             'status' => "Diproses"
         ]);
